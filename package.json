@@ -1,0 +1,25 @@
+{
+  "name": "roomle-web-sdk-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "node clean-up",
+    "build": "npm run clean && node copy && node node_modules/rollup/bin/rollup  -c",
+    "serve": "npm run build && node node_modules/http-server/bin/http-server -c-1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fs-extra": "7.0.0",
+    "http-server": "0.11.1",
+    "rollup": "0.66.6",
+    "rollup-plugin-copy": "0.2.3",
+    "rollup-plugin-node-resolve": "3.4.0",
+    "rollup-plugin-typescript2": "0.17.1",
+    "roomle-web-sdk": "git+https://github.com/Roomle/web-sdk.git#1.0.13",
+    "tslib": "1.9.3",
+    "typescript": "3.1.3"
+  }
+}

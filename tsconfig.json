@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esNext",
+    "moduleResolution": "node",
+    "outDir": "dist/",
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "importHelpers": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./packages/typings",
+      "./node_modules/zone.js/dist"
+    ]
+  },
+  "exclude": [
+    "node_modules/**",
+    "dist/**",
+    ".history/**",
+    ".idea/**",
+    ".vscode/**",
+    "coverage/**",
+    "packages/common-ui",
+    "packages/planner-ui",
+    "tmp/**"
+  ]
+}
