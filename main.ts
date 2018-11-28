@@ -57,6 +57,27 @@ import {UiKernelParameter, UiPossibleChild} from 'roomle-web-sdk/lib/definitions
     await roomleConfigurator.getApi().init(element);
     // 8. load something (to know how to load see XXX section about conf vs item vs conf string)
     await roomleConfigurator.getApi().loadConfigurableItemById('usm:frame');
+    // 9.  load something (to know how to load see XXX section about conf vs item vs conf string)
+    // 9.a fetch the ID from the query param id and load it correctly. Depending on the count of the :
+    //     we either load a loadConfigurableItemById or loadConfigurationById
+    let fallbackId = 'usm:frame'
+    let id = fallbackId;
+    let count = 1;
+    if (window.location.search) {
+        id = new URLSearchParams(window.location.search).get('id');
+        count = id.split(':').length;
+    }
+    switch (count) {
+        case 2:
+            await roomleConfigurator.getApi().loadConfigurableItemById(id);
+            break;
+        case 3:
+            await roomleConfigurator.getApi().loadConfigurationById(id);
+            break;
+        default:
+            await roomleConfigurator.getApi().loadConfigurableItemById(fallbackId);
+            break;
+    }
 
     // 9. register a click listener on a button which triggers the checkout process
     //    do this after init is finished because otherwise it could happen that you get invalid data
