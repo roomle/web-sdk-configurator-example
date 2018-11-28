@@ -1,5 +1,5 @@
 import {UiKernelParameter} from 'roomle-web-sdk/lib/definitions/typings/kernel';
-import {UpdateParameterCallback} from './events';
+import {SetValueOfParameterCallback} from './events';
 import {RapiMaterial, RapiMaterialGroup} from 'roomle-web-sdk/lib/definitions/typings/rapi-types';
 
 const createDefaultStuff = (parameter: UiKernelParameter): HTMLElement => {
@@ -17,7 +17,7 @@ const createDefaultStuff = (parameter: UiKernelParameter): HTMLElement => {
     return container;
 }
 
-const handleMaterial = (parameter: UiKernelParameter, onUpdateEvent: UpdateParameterCallback): HTMLElement => {
+const handleMaterial = (parameter: UiKernelParameter, onSetValueOfParameter: SetValueOfParameterCallback): HTMLElement => {
     const element = createDefaultStuff(parameter);
     const loading = document.createElement('div');
     loading.innerText = '... loading ...';
@@ -33,7 +33,7 @@ const handleMaterial = (parameter: UiKernelParameter, onUpdateEvent: UpdateParam
             group.materials.forEach((material: RapiMaterial) => {
                 const materialElement = document.createElement('div');
                 materialElement.classList.add('parameter__material');
-                materialElement.addEventListener('click', () => onUpdateEvent(parameter, material.id));
+                materialElement.addEventListener('click', () => onSetValueOfParameter(parameter, material.id));
                 if (material.thumbnail) {
                     materialElement.style.backgroundImage = 'url(' + material.thumbnail + ')';
                 } else if (material.color) {
@@ -52,28 +52,28 @@ const handleMaterial = (parameter: UiKernelParameter, onUpdateEvent: UpdateParam
     return element;
 }
 
-const handleOptions = (parameter: UiKernelParameter, onUpdateEvent: UpdateParameterCallback): HTMLElement => {
+const handleOptions = (parameter: UiKernelParameter, onSetValueOfParameter: SetValueOfParameterCallback): HTMLElement => {
     const element = createDefaultStuff(parameter);
     parameter.validValues.forEach((validValue) => {
         const option = document.createElement('div')
         option.classList.add('parameter__option');
         option.innerText = validValue.label;
-        option.addEventListener('click', () => onUpdateEvent(parameter, validValue.value));
+        option.addEventListener('click', () => onSetValueOfParameter(parameter, validValue.value));
         element.appendChild(option);
     });
     return element;
 }
 
-const handleRange = (parameter: UiKernelParameter, onUpdateEvent: UpdateParameterCallback): HTMLElement => {
+const handleRange = (parameter: UiKernelParameter, onUpdateEvent: SetValueOfParameterCallback): HTMLElement => {
     const element = createDefaultStuff(parameter);
     return element;
 }
 
-const handleUnknown = (parameter: UiKernelParameter, onUpdateEvent: UpdateParameterCallback): HTMLElement => {
+const handleUnknown = (parameter: UiKernelParameter, onUpdateEvent: SetValueOfParameterCallback): HTMLElement => {
     return createDefaultStuff(parameter);
 }
 
-export const handleParameter = (parameter: UiKernelParameter, onUpdateEvent: UpdateParameterCallback): HTMLElement => {
+export const handleParameter = (parameter: UiKernelParameter, onUpdateEvent: SetValueOfParameterCallback): HTMLElement => {
     const uiType = parameter.uiType;
     switch (uiType) {
         case 'Material':

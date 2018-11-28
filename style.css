@@ -10,6 +10,9 @@ body {
     float: left;
     box-sizing: border-box;
     padding: 1rem;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: scroll;
 }
 
 .parameter-container {
@@ -38,4 +41,23 @@ body {
     width: 70%;
     float: right;
     height: 100%;
+}
+
+.addon-element {
+    width: 30%;
+    overflow: hidden;
+    display: inline-block;
+    padding: 1rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.addon-element img {
+    width: 100%;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
