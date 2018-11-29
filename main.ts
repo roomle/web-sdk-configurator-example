@@ -8,6 +8,9 @@ import {InitData} from 'roomle-web-sdk/lib/definitions/common-core/src/utils/shi
 import {handleParameterUpdate, handlePossibleChildrenUpdate, handlePartlist} from './handler/events';
 // 1.c import UiKernelParameter, UiPossibleChild for type assistance
 import {UiKernelParameter, UiPossibleChild} from 'roomle-web-sdk/lib/definitions/typings/kernel';
+// 1.d import some scene settings to load them into the scene when the user
+//     clicks on the change scene button
+import {sceneSettings} from './scene-settings';
 
 // 2. create an async iife to use async/await
 ((async function () {
@@ -53,8 +56,11 @@ import {UiKernelParameter, UiPossibleChild} from 'roomle-web-sdk/lib/definitions
     //    function before you call init to get the inital part list as well
     roomleConfigurator.getApi().callbacks.onPartListUpdate = handlePartlist;
 
-    // 8. initialize the canvas
-    await roomleConfigurator.getApi().init(element);
+    // 8. initialize the canvas, we add a floor material so that the furniture does stand on a 
+    //    nice looking floor, in this example we use koinor:EicheLondon, for other floors get
+    //    in touch with us
+    await roomleConfigurator.getApi().init(element, {initialFloorMaterial: 'roomle_floor:EicheLondon'});
+
     // 9.  load something (to know how to load see XXX section about conf vs item vs conf string)
     // 9.a fetch the ID from the query param id and load it correctly. Depending on the count of the :
     //     we either load a loadConfigurableItemById or loadConfigurationById
@@ -97,4 +103,11 @@ import {UiKernelParameter, UiPossibleChild} from 'roomle-web-sdk/lib/definitions
 
     // 10.d fancy dom manipulation, should be done by your framework
     document.querySelector('.modal__close').addEventListener('click', () => document.querySelector('.modal-container').classList.remove('show'));
+
+    // 11 add a click listener which changes the scene
+    document.querySelector('.change-scene').addEventListener('click', async () => {
+        // 11.b load scene settings to adjust the look and feel of the scene, for details about the JSON
+        //     we load here, see scene-settings.ts
+        await roomleConfigurator.getApi().loadSceneSetting(sceneSettings);
+    });
 }()));
