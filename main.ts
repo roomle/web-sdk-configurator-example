@@ -24,6 +24,6 @@ import {InitData} from 'roomle-web-sdk/lib/definitions/common-core/src/utils/shi
     const element = document.getElementById('roomle-canvas-container');
     // 6. initialize the canvas
     await roomleConfigurator.getApi().init(element);
-    // 7. load something (to know how to load see XXX section about conf vs item vs conf string)
-    await roomleConfigurator.getApi().loadConfigurableItemById('bespoke_creative:shelfSystem');
+    // 7. load something (to know how to load see section about conf vs item vs conf string)
+    await roomleConfigurator.getApi().loadConfigurableItemById('usm:frame');
 }()));
