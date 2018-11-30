@@ -57,7 +57,7 @@ import {sceneSettings} from './scene-settings';
     roomleConfigurator.getApi().callbacks.onPartListUpdate = handlePartlist;
 
     // 8. initialize the canvas, we add a floor material so that the furniture does stand on a 
-    //    nice looking floor, in this example we use koinor:EicheLondon, for other floors get
+    //    nice looking floor, in this example we use roomle_floor:EicheLondon, for other floors get
     //    in touch with us
     await roomleConfigurator.getApi().init(element, {initialFloorMaterial: 'roomle_floor:EicheLondon'});
 
