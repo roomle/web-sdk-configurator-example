@@ -61,7 +61,7 @@ import {sceneSettings} from './scene-settings';
     //    in touch with us
     await roomleConfigurator.getApi().init(element, {initialFloorMaterial: 'roomle_floor:EicheLondon'});
 
-    // 9.  load something (to know how to load see XXX section about conf vs item vs conf string)
+    // 9.  load something (to know how to load see section about conf vs item vs conf string)
     // 9.a fetch the ID from the query param id and load it correctly. Depending on the count of the :
     //     we either load a loadConfigurableItemById or loadConfigurationById
     let fallbackId = 'usm:frame'
