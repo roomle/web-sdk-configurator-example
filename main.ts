@@ -50,6 +50,6 @@ import {UiKernelParameter, UiPossibleChild} from 'roomle-web-sdk/lib/definitions
 
     // 7. initialize the canvas
     await roomleConfigurator.getApi().init(element);
-    // 8. load something (to know how to load see XXX section about conf vs item vs conf string)
+    // 8. load something (to know how to load see section about conf vs item vs conf string)
     await roomleConfigurator.getApi().loadConfigurableItemById('usm:frame');
 }()));
