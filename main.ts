@@ -38,6 +38,6 @@ import {UiKernelParameter} from 'roomle-web-sdk/lib/definitions/typings/kernel';
     roomleConfigurator.getApi().callbacks.onUpdateParameters = (parameters) => handleParameterUpdate(parameters, setParameter);
     // 6. initialize the canvas
     await roomleConfigurator.getApi().init(element);
-    // 7. load something (to know how to load see XXX section about conf vs item vs conf string)
-    await roomleConfigurator.getApi().loadConfigurableItemById('bespoke_creative:shelfSystem');
+    // 7. load something (to know how to load see section about conf vs item vs conf string)
+    await roomleConfigurator.getApi().loadConfigurableItemById('usm:frame');
 }()));
